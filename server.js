@@ -13,7 +13,7 @@ const renderer = createBundleRenderer(serverBundle, {
     clientManifest,
 })
 
-// 定义拦截器，放置访问bundle文件
+// 定义拦截器，防止访问bundle.json文件
 server.use((req, res, next) => {
     if (req.url == '/vue-ssr-client-manifest.json' || req.url == '/vue-ssr-server-bundle.json') {
         return res.status(404).end();
